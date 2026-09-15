@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הצטרפות לרשימת התפוצה - יצחק חלימי, ייעוץ משכנתאות</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap');
+
+  :root{
+    --navy: #1B3357;
+    --gold: #A9822F;
+    --gray: #6E6F71;
+    --bg-light: #EDF1F6;
+    --paper: #FDFEFE;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    padding: 40px 16px;
+    background: var(--bg-light);
+    font-family: 'Heebo', sans-serif;
+    color: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card{
+    max-width: 440px;
+    width: 100%;
+    background: var(--paper);
+    border: 3px solid var(--navy);
+    border-radius: 6px;
+    padding: 40px 34px;
+    text-align: center;
+  }
+
+  h1{
+    font-size: 24px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: var(--navy);
+  }
+
+  .divider{
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 0 auto 18px;
+  }
+
+  p{
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray);
+    margin: 0 0 26px;
+  }
+
+  label{
+    display: block;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  input[type="email"]{
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 16px;
+    font-family: inherit;
+    border: 1.5px solid #CBD5E0;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: right;
+    direction: rtl;
+  }
+
+  input:focus{
+    outline: none;
+    border-color: var(--gold);
+  }
+
+  button{
+    width: 100%;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  button:hover{
+    opacity: 0.92;
+  }
+
+  .signature{
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--bg-light);
+  }
+
+  .signature .name{
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  .signature .role{
+    color: var(--gray);
+    font-size: 12px;
+  }
+
+  .signature .phone{
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .note{
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 14px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>הצטרפות לרשימת התפוצה</h1>
+    <div class="divider"></div>
+    <p>קבלו עדכונים ותובנות על ריבית, מסלולים ומיחזור משכנתא - ישירות למייל.</p>
+
+    <form id="signupForm">
+      <label for="email">כתובת מייל</label>
+      <input type="email" id="email" name="email" placeholder="your@email.com" required>
+
+      <button type="submit">הצטרפו עכשיו</button>
+    </form>
+
+    <div class="signature">
+      <div class="name">יצחק חלימי</div>
+      <div class="role">יועץ משכנתאות</div>
+      <div class="phone">055-673-6925</div>
+    </div>
+
+    <div class="note">בלחיצה על "הצטרפו עכשיו" ייפתח מייל מוכן מראש לשליחה אלינו.</div>
+  </div>
+
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const subject = encodeURIComponent('הצטרפות לרשימת התפוצה');
+      const body = encodeURIComponent('שלום, אשמח להצטרף לרשימת התפוצה.\n\nמייל: ' + email);
+      window.location.href = 'mailto:i0556736925@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
