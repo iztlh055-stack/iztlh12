@@ -103,6 +103,11 @@
     opacity: 0.92;
   }
 
+  button:disabled{
+    opacity: 0.6;
+    cursor: default;
+  }
+
   .signature{
     margin-top: 28px;
     padding-top: 18px;
@@ -132,6 +137,23 @@
     color: var(--gray);
     margin-top: 14px;
   }
+
+  .status{
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 14px;
+    display: none;
+  }
+
+  .status.success{
+    color: #1B7A43;
+    display: block;
+  }
+
+  .status.error{
+    color: #B3261E;
+    display: block;
+  }
 </style>
 </head>
 <body>
@@ -141,10 +163,15 @@
     <p>קבלו עדכונים ותובנות על ריבית, מסלולים ומיחזור משכנתא - ישירות למייל.</p>
 
     <form id="signupForm">
+      <input type="hidden" name="access_key" value="93d58a35-efaa-463b-8f11-3d9ef8ea287e">
+      <input type="hidden" name="subject" value="הרשמה חדשה לרשימת התפוצה">
+      <input type="hidden" name="from_name" value="טופס הרשמה - אתר יצחק חלימי">
+
       <label for="email">כתובת מייל</label>
       <input type="email" id="email" name="email" placeholder="your@email.com" required>
 
-      <button type="submit">הצטרפו עכשיו</button>
+      <button type="submit" id="submitBtn">הצטרפו עכשיו</button>
+      <div class="status" id="statusMsg"></div>
     </form>
 
     <div class="signature">
@@ -153,16 +180,46 @@
       <div class="phone">055-673-6925</div>
     </div>
 
-    <div class="note">בלחיצה על "הצטרפו עכשיו" ייפתח מייל מוכן מראש לשליחה אלינו.</div>
+    <div class="note">הפרטים שלכם יישלחו אלינו באופן מאובטח ולא יפורסמו.</div>
   </div>
 
   <script>
-    document.getElementById('signupForm').addEventListener('submit', function(e){
+    const form = document.getElementById('signupForm');
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', async function(e){
       e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      const subject = encodeURIComponent('הצטרפות לרשימת התפוצה');
-      const body = encodeURIComponent('שלום, אשמח להצטרף לרשימת התפוצה.\n\nמייל: ' + email);
-      window.location.href = 'mailto:i0556736925@gmail.com?subject=' + subject + '&body=' + body;
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+      status.className = 'status';
+      status.textContent = '';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          status.className = 'status success';
+          status.textContent = 'תודה! נרשמתם בהצלחה לרשימת התפוצה.';
+          form.reset();
+        } else {
+          status.className = 'status error';
+          status.textContent = 'משהו השתבש. נסו שוב או צרו קשר טלפונית.';
+        }
+      } catch (err) {
+        status.className = 'status error';
+        status.textContent = 'משהו השתבש. נסו שוב או צרו קשר טלפונית.';
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'הצטרפו עכשיו';
     });
   </script>
 </body>
