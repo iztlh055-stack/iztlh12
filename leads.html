@@ -87,6 +87,25 @@
     border-color: var(--gold);
   }
 
+  textarea{
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    border: 1.5px solid #CBD5E0;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: right;
+    direction: rtl;
+    resize: vertical;
+    min-height: 80px;
+  }
+
+  textarea:focus{
+    outline: none;
+    border-color: var(--gold);
+  }
+
   button{
     width: 100%;
     background: var(--gold);
@@ -173,6 +192,9 @@
 
       <label for="phone">טלפון</label>
       <input type="tel" id="phone" name="phone" placeholder="050-0000000" required>
+
+      <label for="message">הודעה (לא חובה)</label>
+      <textarea id="message" name="message" placeholder="ספרו לנו קצת יותר..."></textarea>
 
       <button type="submit" id="submitBtn">השאירו פרטים</button>
       <div class="status" id="statusMsg"></div>
