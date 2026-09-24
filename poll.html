@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סקר קצר לקראת החג - יצחק חלימי, ייעוץ משכנתאות</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&display=swap');
+
+  :root{
+    --navy: #1B3357;
+    --gold: #A9822F;
+    --gray: #6E6F71;
+    --bg-light: #EDF1F6;
+    --paper: #FDFEFE;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    padding: 40px 16px;
+    background: var(--bg-light);
+    font-family: 'Heebo', sans-serif;
+    color: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card{
+    max-width: 480px;
+    width: 100%;
+    background: var(--paper);
+    border: 3px solid var(--navy);
+    border-radius: 6px;
+    padding: 40px 34px;
+    text-align: center;
+  }
+
+  h1{
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .divider{
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin: 0 auto 18px;
+  }
+
+  p{
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--gray);
+    margin: 0 0 24px;
+  }
+
+  .hint{
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+    margin: -14px 0 20px;
+  }
+
+  .options{
+    text-align: right;
+    margin-bottom: 24px;
+  }
+
+  .option{
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1.5px solid #CBD5E0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+  }
+
+  .option:hover{
+    border-color: var(--gold);
+  }
+
+  .option.checked{
+    border-color: var(--gold);
+    background: var(--bg-light);
+  }
+
+  .option input[type="checkbox"]{
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--gold);
+    flex: none;
+  }
+
+  .option span{
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--navy);
+  }
+
+  button{
+    width: 100%;
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  button:hover{
+    opacity: 0.92;
+  }
+
+  button:disabled{
+    opacity: 0.6;
+    cursor: default;
+  }
+
+  .signature{
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--bg-light);
+  }
+
+  .signature .name{
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--navy);
+  }
+
+  .signature .role{
+    color: var(--gray);
+    font-size: 12px;
+  }
+
+  .signature .phone{
+    color: var(--gold);
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .status{
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 14px;
+    display: none;
+  }
+
+  .status.success{
+    color: #1B7A43;
+    display: block;
+  }
+
+  .status.error{
+    color: #B3261E;
+    display: block;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>מה תרצו שנכתוב לקראת החג? 🍋🌿</h1>
+    <div class="divider"></div>
+    <p>הכנתי כמה רעיונות לתוכן הבא - אשמח לדעת מה הכי מעניין אתכם.</p>
+    <div class="hint">בחרו עד 2 נושאים</div>
+
+    <form id="pollForm">
+      <input type="hidden" name="access_key" value="93d58a35-efaa-463b-8f11-3d9ef8ea287e">
+      <input type="hidden" name="subject" value="תוצאת סקר תוכן - לקראת החג">
+      <input type="hidden" name="from_name" value="סקר תוכן - אתר יצחק חלימי">
+
+      <div class="options">
+        <label class="option">
+          <input type="checkbox" name="topics" value="איך להתכונן עם ההכנסות לפני שניגשים לבנק">
+          <span>איך להתכונן עם ההכנסות לפני שניגשים לבנק</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="topics" value="איך לתכנן מסלולי הלוואה">
+          <span>איך לתכנן מסלולי הלוואה</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="topics" value="מחזור משכנתא ובדיקת כדאיות תקופתית">
+          <span>מחזור משכנתא ובדיקת כדאיות תקופתית</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="topics" value="איך לגייס הון עצמי ראשוני נכון">
+          <span>איך לגייס הון עצמי ראשוני נכון</span>
+        </label>
+        <label class="option">
+          <input type="checkbox" name="topics" value="איך להציג הכנסות לא סטנדרטיות לבנק">
+          <span>איך להציג הכנסות לא סטנדרטיות לבנק</span>
+        </label>
+      </div>
+
+      <button type="submit" id="submitBtn">שלחו לי את הבחירה</button>
+      <div class="status" id="statusMsg"></div>
+    </form>
+
+    <div class="signature">
+      <div class="name">יצחק חלימי</div>
+      <div class="role">יועץ משכנתאות</div>
+      <div class="phone">055-673-6925</div>
+    </div>
+  </div>
+
+  <script>
+    const checkboxes = document.querySelectorAll('input[name="topics"]');
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', function(){
+        const checked = document.querySelectorAll('input[name="topics"]:checked');
+        this.closest('.option').classList.toggle('checked', this.checked);
+        if (checked.length >= 2) {
+          checkboxes.forEach(other => {
+            if (!other.checked) other.disabled = true;
+          });
+        } else {
+          checkboxes.forEach(other => { other.disabled = false; });
+        }
+      });
+    });
+
+    const form = document.getElementById('pollForm');
+    const btn = document.getElementById('submitBtn');
+    const status = document.getElementById('statusMsg');
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      const checked = document.querySelectorAll('input[name="topics"]:checked');
+      if (checked.length === 0) {
+        status.className = 'status error';
+        status.textContent = 'בחרו לפחות נושא אחד לפני השליחה.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'שולח...';
+      status.className = 'status';
+      status.textContent = '';
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+        const result = await response.json();
+
+        if (result.success) {
+          status.className = 'status success';
+          status.textContent = 'תודה! נקח את זה בחשבון בתוכן הבא.';
+          form.reset();
+          document.querySelectorAll('.option').forEach(o => o.classList.remove('checked'));
+          checkboxes.forEach(cb => cb.disabled = false);
+        } else {
+          status.className = 'status error';
+          status.textContent = 'משהו השתבש. נסו שוב בבקשה.';
+        }
+      } catch (err) {
+        status.className = 'status error';
+        status.textContent = 'משהו השתבש. נסו שוב בבקשה.';
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'שלחו לי את הבחירה';
+    });
+  </script>
+</body>
+</html>
