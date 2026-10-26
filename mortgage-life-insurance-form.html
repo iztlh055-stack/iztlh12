@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -159,6 +158,7 @@
 
   input[type="text"],
   input[type="number"],
+  input[type="email"],
   input[type="date"],
   select{
     width:100%;
@@ -386,6 +386,11 @@
             </div>
           </div>
 
+          <div class="field key-field">
+            <label for="h_email">כתובת מייל</label>
+            <input type="email" id="h_email" name="h_email" inputmode="email" autocomplete="email" dir="ltr" style="text-align:right;" placeholder="name@example.com">
+          </div>
+
           <div class="field">
             <label>מצב רפואי כללי תקין</label>
             <div class="toggle-group">
@@ -525,6 +530,7 @@
       'שם מלא: ' + val('h_name'),
       'גיל: ' + val('h_age'),
       'ת.ז.: ' + val('h_id'),
+      'מייל: ' + val('h_email'),
       'מצב רפואי תקין: ' + radio('h_health'),
       'מעשן: ' + radio('h_smoke')
     ];
@@ -544,6 +550,7 @@
     fd.append('fi-text-h_name', val('h_name'));
     fd.append('fi-text-h_age', val('h_age'));
     fd.append('fi-text-h_id', val('h_id'));
+    fd.append('fi-text-h_email', val('h_email'));
     fd.append('fi-text-h_health', radio('h_health'));
     fd.append('fi-text-h_smoke', radio('h_smoke'));
     fd.append('fi-text-property_value', val('property_value'));
